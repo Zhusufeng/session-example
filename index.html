@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Session Example</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form id="login-form">
+      <button type="submit" name="login" id="login">Login</button>
+    </form>
+    <script>
+      const loginForm = document.getElementById('login-form');
+      // console.log(loginForm);
+
+      function login(e) {
+        e.preventDefault();
+        // console.log(e);
+        fetch('login')
+          .then((res) => {
+            console.log(res);
+          })
+      }
+      loginForm.addEventListener('submit', login);
+    </script>
+  </body>
+</html>
