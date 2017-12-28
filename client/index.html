@@ -16,11 +16,16 @@
         e.preventDefault();
         // console.log(e);
         fetch('/login', {
-          method: 'POST'
+          method: 'POST',
+          credentials: 'include',
+          body: loginForm
         })
           .then((res) => {
-            console.log(res);
+            return res.json();
           })
+          .then((data) => {
+            console.log(data);
+          });
       }
       loginForm.addEventListener('submit', login);
     </script>
