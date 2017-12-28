@@ -20,6 +20,14 @@ app.get('/', (req, res) => {
   }
 });
 
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) console.error('You received this err: ', err);
+    console.log('User logged out');
+    res.status(200).send('You logged out');
+  });
+});
+
 app.listen(8088, () => {
   console.log('session-example listening on port 8088');
 });
