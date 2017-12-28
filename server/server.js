@@ -3,8 +3,19 @@ const session = require('express-session');
 
 const app = express();
 
-app.use(session{
+app.use(session({
+  secret: 'simple'
+}));
 
+app.get('/', (req, res) => {
+  if(!req.session.userName && !req.session.visitCount) {
+    req.session.userName = 'lisa';
+    req.session.visitCount = 1;
+    res.status(201).send(req.session);
+  } else {
+    req.session.visitCount++;
+    res.status(200).send(req.session);
+  }
 });
 
 app.listen(8088, () => {
