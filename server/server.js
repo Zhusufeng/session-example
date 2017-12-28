@@ -4,7 +4,9 @@ const session = require('express-session');
 const app = express();
 
 app.use(session({
-  secret: 'simple'
+  secret: 'simple',
+  resave: false, // save session even if never modified
+  saveUninitialized: true // save session even if new but not modified
 }));
 
 app.get('/', (req, res) => {
