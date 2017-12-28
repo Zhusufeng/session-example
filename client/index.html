@@ -38,11 +38,13 @@
           body: loginForm
         })
           .then((res) => {
-            console.log(res.body);
             return res.json();
           })
           .then((data) => {
             console.log(data);
+            if (data.error) {
+              console.log('There was an error...');
+            }
           });
       }
 
