@@ -8,13 +8,15 @@
     <form id="login-form">
       <button type="submit" name="login" id="login">Login</button>
     </form>
+    <form id="logout-form">
+      <button type="submit" name="logout" id="login">Logout</button>
+    </form>
     <script>
       const loginForm = document.getElementById('login-form');
-      // console.log(loginForm);
+      const logoutForm = document.getElementById('logout-form');
 
       function login(e) {
         e.preventDefault();
-        // console.log(e);
         fetch('/login', {
           method: 'POST',
           credentials: 'include',
@@ -27,7 +29,25 @@
             console.log(data);
           });
       }
+
+      function logout(e) {
+        e.preventDefault();
+        fetch('/logout', {
+          method: 'POST',
+          credentials: 'include',
+          body: loginForm
+        })
+          .then((res) => {
+            console.log(res.body);
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+          });
+      }
+
       loginForm.addEventListener('submit', login);
+      logoutForm.addEventListener('submit', logout);
     </script>
   </body>
 </html>
