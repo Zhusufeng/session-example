@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 
 const app = express();
+app.use(express.static(__dirname + '/client'));
 
 app.use(session({
   secret: 'simple',
@@ -9,7 +10,7 @@ app.use(session({
   saveUninitialized: true // save session even if new but not modified
 }));
 
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
   if(!req.session.userName && !req.session.visitCount) {
     req.session.userName = 'lisa';
     req.session.visitCount = 1;
