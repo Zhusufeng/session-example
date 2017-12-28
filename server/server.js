@@ -1,8 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const app = express();
-app.use(express.static(__dirname + '/client'));
+
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/client'))
 
 app.use(session({
   secret: 'simple',
@@ -10,7 +13,11 @@ app.use(session({
   saveUninitialized: true // save session even if new but not modified
 }));
 
-app.get('/login', (req, res) => {
+// app.get('/', (req, res) => {
+//   res.render(index);
+// });
+
+app.post('/login', (req, res) => {
   if(!req.session.userName && !req.session.visitCount) {
     req.session.userName = 'lisa';
     req.session.visitCount = 1;
@@ -29,6 +36,4 @@ app.get('/logout', (req, res) => {
   });
 });
 
-app.listen(8088, () => {
-  console.log('session-example listening on port 8088');
-});
+module.exports = app;
