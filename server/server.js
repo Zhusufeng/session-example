@@ -13,9 +13,11 @@ app.use(session({
   saveUninitialized: true // save session even if new but not modified
 }));
 
-// app.get('/', (req, res) => {
-//   res.render(index);
-// });
+const users = {
+  lisa: {
+    visitCount: 0
+  }
+};
 
 app.post('/login', (req, res) => {
   if(!req.session.userName && !req.session.visitCount) {
