@@ -30,9 +30,14 @@ app.post('/login', (req, res) => {
 
 app.post('/logout', (req, res) => {
   req.session.destroy((err) => {
-    if (err) console.error('You received this err: ', err);
+    let myResponse = {};
+    if (err) {
+      console.error('You received this err: ', err);
+      myResponse.error = err;
+    }
     console.log('User logged out');
-    res.status(200).send('You logged out');
+    myResponse.message = 'User logged out';
+    res.status(200).send(myResponse);
   });
 });
 
