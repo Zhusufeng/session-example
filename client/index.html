@@ -15,7 +15,9 @@
       function login(e) {
         e.preventDefault();
         // console.log(e);
-        fetch('login')
+        fetch('/login', {
+          method: 'POST'
+        })
           .then((res) => {
             console.log(res);
           })
