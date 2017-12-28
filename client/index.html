@@ -5,24 +5,39 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <form id="login-form">
-      <label>Username: </label><BR>
-      <input name="username" id="username" /><BR>
-      <button type="submit" name="login" id="login">Login</button>
+
+    <form id="login-form" name="login-form">
+      <div>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username">
+      </div>
+      <input type="submit" name="login" id="login" value="Login">
     </form>
+
     <form id="logout-form">
-      <button type="submit" name="logout" id="login">Logout</button>
+      <input type="submit" name="logout" id="logout" value="Logout">
     </form>
+
     <script>
       const loginForm = document.getElementById('login-form');
       const logoutForm = document.getElementById('logout-form');
 
       function login(e) {
         e.preventDefault();
+        
+        let data = {};
+        data.username = document.getElementById('username').value;
+        console.log(data);
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
         fetch('/login', {
           method: 'POST',
+          headers: myHeaders,
+          mode: 'cors',
           credentials: 'include',
-          body: loginForm
+          body: JSON.stringify(data)
         })
           .then((res) => {
             return res.json();
