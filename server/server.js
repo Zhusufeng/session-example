@@ -19,6 +19,31 @@ const users = {
   }
 };
 
+app.post('/signup', (req, res) => {
+  console.log(req.body.username);
+  let name = req.body.username;
+
+  let info = {
+    name: name
+  };
+
+  if(users[name]) {
+    info.error = 'You already have an account. Please use log in option.';
+    res.status(200).send(info);
+  } else {
+    users[name] = {
+      visitCount = 1
+    };
+
+    req.session.visitCount = 1;
+
+    info.totalVisitCount = users[name].visitCount;
+    info.sessionVisitCount = req.session.visitCount;
+    
+    res.status(201).send(info);
+  }
+});
+
 app.post('/login', (req, res) => {
   console.log(req.body.username);
   let name = req.body.username;
