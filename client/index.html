@@ -6,16 +6,33 @@
   </head>
   <body>
 
-    <form id="login-form" name="login-form">
-      <div>
+    <form id="signup-form" name="signup-form">
+      <fieldset>
+        <legend>Sign Up</legend>
         <label for="username">Username: </label>
         <input type="text" name="username" id="username">
-      </div>
-      <input type="submit" name="login" id="login" value="Login">
+        <input type="submit" name="signup" id="signup" value="Sign Up">
+      </fieldset>
+    </form>
+    
+    <p></p>
+
+    <form id="login-form" name="login-form">
+      <fieldset>
+        <legend>Log In</legend>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username">
+        <input type="submit" name="login" id="login" value="Log In">
+      </fieldset>
     </form>
 
+    <p></p>
+
     <form id="logout-form">
-      <input type="submit" name="logout" id="logout" value="Logout">
+      <fieldset>
+        <legend>Log Out</legend>
+        <input type="submit" name="logout" id="logout" value="Log Out">
+      </fieldset>
     </form>
 
     <script>
