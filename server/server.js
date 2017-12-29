@@ -15,19 +15,35 @@ app.use(session({
 
 const users = {
   lisa: {
-    visitCount: 0
+    visitCount: 100
   }
 };
 
 app.post('/login', (req, res) => {
-  if(!req.session.userName && !req.session.visitCount) {
-    req.session.userName = 'lisa';
+  console.log(req.body.username);
+  let name = req.body.username;
+
+  if (!users[name]) {
+    users[name] = {
+      visitCount: 1
+    };
+  } else {
+    users[name].visitCount++;
+  }
+
+  if (!req.session.visitCount) {
     req.session.visitCount = 1;
-    res.status(201).send(req.session);
   } else {
     req.session.visitCount++;
-    res.status(200).send(req.session);
   }
+
+  let info = {
+    name: name,
+    totalVisitCount: users[name].visitCount,
+    sessionVisitCount: req.session.visitCount
+  };
+
+  res.status(200).send(info);
 });
 
 app.post('/logout', (req, res) => {
