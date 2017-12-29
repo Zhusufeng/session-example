@@ -57,18 +57,18 @@ app.post('/login', (req, res) => {
     res.status(200).send(info);
   } else {
     users[name].visitCount++;
+
+    if (!req.session.visitCount) {
+      req.session.visitCount = 1;
+    } else {
+      req.session.visitCount++;
+    }
+
+    info.totalVisitCount = users[name].visitCount;
+    info.sessionVisitCount = req.session.visitCount;
+
+    res.status(200).send(info);
   }
-
-  if (!req.session.visitCount) {
-    req.session.visitCount = 1;
-  } else {
-    req.session.visitCount++;
-  }
-
-  info.totalVisitCount = users[name].visitCount;
-  info.sessionVisitCount = req.session.visitCount;
-
-  res.status(200).send(info);
 });
 
 app.post('/logout', (req, res) => {
