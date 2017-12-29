@@ -48,10 +48,13 @@ app.post('/login', (req, res) => {
   console.log(req.body.username);
   let name = req.body.username;
 
+  let info = {
+    name: name
+  };
+
   if (!users[name]) {
-    users[name] = {
-      visitCount: 1
-    };
+    info.error = 'You do not have an account. Please use sign up option.';
+    res.status(200).send(info);
   } else {
     users[name].visitCount++;
   }
@@ -62,11 +65,8 @@ app.post('/login', (req, res) => {
     req.session.visitCount++;
   }
 
-  let info = {
-    name: name,
-    totalVisitCount: users[name].visitCount,
-    sessionVisitCount: req.session.visitCount
-  };
+  info.totalVisitCount = users[name].visitCount;
+  info.sessionVisitCount = req.session.visitCount;
 
   res.status(200).send(info);
 });
