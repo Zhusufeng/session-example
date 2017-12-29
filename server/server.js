@@ -32,14 +32,14 @@ app.post('/signup', (req, res) => {
     res.status(200).send(info);
   } else {
     users[name] = {
-      visitCount = 1
+      visitCount: 1
     };
 
     req.session.visitCount = 1;
 
     info.totalVisitCount = users[name].visitCount;
     info.sessionVisitCount = req.session.visitCount;
-    
+
     res.status(201).send(info);
   }
 });
