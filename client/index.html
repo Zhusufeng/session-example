@@ -9,8 +9,8 @@
     <form id="signup-form" name="signup-form">
       <fieldset>
         <legend>Sign Up</legend>
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username">
+        <label for="signup-username">Username: </label>
+        <input type="text" name="signup-username" id="signup-username">
         <input type="submit" name="signup" id="signup" value="Sign Up">
       </fieldset>
     </form>
@@ -36,8 +36,34 @@
     </form>
 
     <script>
+      const signupForm = document.getElementById('signup-form');
       const loginForm = document.getElementById('login-form');
       const logoutForm = document.getElementById('logout-form');
+
+      function signup(e) {
+        e.preventDefault();
+
+        let data = {};
+        data.username = document.getElementById('signup-username').value;
+        console.log(data);
+
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
+        fetch('/signup', {
+          method: 'POST',
+          headers: myHeaders,
+          mode: 'cors',
+          credentials: 'include',
+          body: JSON.stringify(data)
+        })
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            console.log(data);
+          });
+      }
 
       function login(e) {
         e.preventDefault();
@@ -82,6 +108,7 @@
           });
       }
 
+      signupForm.addEventListener('submit', signup);
       loginForm.addEventListener('submit', login);
       logoutForm.addEventListener('submit', logout);
     </script>
