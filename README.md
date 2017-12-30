@@ -44,9 +44,15 @@ This branch adds an input box for clients to enter a username. To run the server
 A signup input box and button have been added to the client side. To run the server, use node index.js. Signup and Login endpoints bundle user's total visitCounts and session visitCounts in an object called 'info', which is sent to the client. Signup catches if the username has already been created, and login catches if the username has not been created.
 
 ###[6. simple-counter-regenerate](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate)
-This branch refactors the above branch to use req.session instead of the 'info' object. It also checks if someone is logged in already, and someone tries to click 'signup' or 'login'.
+This branch refactors the above branch to use req.session instead of the 'info' object. It also checks if someone is logged in already, and someone tries to click 'signup' or 'login'. To run the server, use node index.js.
 
 ###[7. simple-counter-regenerate-two](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate-two)
-This removes the check on if someone is logged in already when someone clicks 'signup' or 'login'. Instead, if someone is already logged in, it uses req.session.regenerate, which makes a new cookie even if it's already in session. It sets the req.session.user to the person who most recently logged in/signed up.
+This removes the check on if someone is logged in already when someone clicks 'signup' or 'login'. Instead, if someone is already logged in, it uses req.session.regenerate, which makes a new cookie even if it's already in session. It sets the req.session.user to the person who most recently logged in/signed up. To run the server, use node index.js.
 
 ###[8. simple-counter-redo-counting](https://github.com/Zhusufeng/session-example/tree/simple-counter-redo-counting)
+To run the server, use node index.js. This branch fixes the last branch. If you played around with the last branch, you will notice the visitCounts are not the same when you check the console logs for the client versus the server. It seems that req.session.user = users[name] saves a shallow copy of users[name] for the cookie. So on the client side, the totalCount does not change. It will only show the latest totalCount if you log out and then log in again.
+
+## Conclusion
+That's it for now!
+
+If you have any questions, suggestions, insight or any other parting words, please comment below! 
