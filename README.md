@@ -14,6 +14,7 @@ I started out with this [YouTube Tutorial](https://youtu.be/yaeD7OCIzOg), which 
   * Body-Parser
   * Express
   * Express-session
+Note: Not all branches require each piece of tech
 
 ##Table of Contents
 1. [simple-counter](#1.-simple-counter)
@@ -27,6 +28,8 @@ I started out with this [YouTube Tutorial](https://youtu.be/yaeD7OCIzOg), which 
 
 ###[1. simple-counter](https://github.com/Zhusufeng/session-example/tree/simple-counter)
 This first branch follows this [YouTube Tutorial](https://youtu.be/yaeD7OCIzOg) by [Theodore Anderson](https://thejavascriptchronicles.com).
+
+This sets up only a server side file that can be reached at 127.0.0.1:8088. The first visit will create a session with visitCount of 1. Every time you refresh, your session's visitCount will increase by 1. If you turn off your server, the current session will be lost. 
 
 ###2. simple-counter-logout
 
