@@ -47,5 +47,6 @@ A signup input box and button have been added to the client side. To run the ser
 This branch refactors the above branch to use req.session instead of the 'info' object. It also checks if someone is logged in already, and someone tries to click 'signup' or 'login'.
 
 ###[7. simple-counter-regenerate-two](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate-two)
+This removes the check on if someone is logged in already when someone clicks 'signup' or 'login'. Instead, if someone is already logged in, it uses req.session.regenerate, which makes a new cookie even if it's already in session. It sets the req.session.user to the person who most recently logged in/signed up.
 
 ###[8. simple-counter-redo-counting](https://github.com/Zhusufeng/session-example/tree/simple-counter-redo-counting)
