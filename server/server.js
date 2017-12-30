@@ -33,7 +33,7 @@ app.post('/signup', (req, res) => {
     req.session.error = `${name}, you already have an account. Please use log in option.`;
     res.status(200).send(req.session);
   } 
-  // If no one is logged in or name does not have an account, create
+  // If name does not have an account, create
   else {
     return req.session.regenerate(() => {
       users[name] = {
