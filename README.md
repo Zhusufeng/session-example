@@ -54,7 +54,7 @@ To run the server, use node index.js. This branch fixes the last branch. If you 
 
 So on the client side, a visit button has been added to be able to increase the visitCount.
 
-Once that was added, I noticed visitCounts are not the same when I checked the console logs for the client versus the server. It seems that req.session.user = users[name] saves a shallow copy of users[name] object for the cookie/req.session (aka req.session does not reference the same object in users). So on the client side, it receives this cookie and the total visitCounts do not change. So when I added  req.session.user.visitCount++ the visit endpoint, that does not update the users object. It updates the session's own shallow copy. 
+Once that was added, I noticed visitCounts are not the same when I checked the console logs for the client versus the server. It seems that req.session.user = users[name] saves a shallow copy of users[name] object for the cookie/req.session (aka req.session does not reference the same object in users). So on the client side, it receives this cookie and the total visitCounts have not changed. So when I added  req.session.user.visitCount++ to the visit endpoint, that did not update the users object but rather it updates the session's own shallow copy. 
 
 If you logout and login again, it will replace the copy with a new one, so the totalCount has been updated.
 
