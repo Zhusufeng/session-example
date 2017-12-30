@@ -23,11 +23,6 @@ app.post('/signup', (req, res) => {
   console.log(req.body.username);
   let name = req.body.username;
 
-  // Check if anyone is logged in
-  // if (req.session.user) {
-  //   req.session.error = `Someone is logged in already`;
-  //   res.status(200).send(req.session);
-  // } 
   // Check if name already has an account
   if (users[name]) {
     req.session.error = `${name}, you already have an account. Please use log in option.`;
@@ -51,11 +46,6 @@ app.post('/login', (req, res) => {
   console.log(req.body.username);
   let name = req.body.username;
 
-  // Check if anyone is logged in
-  // if (req.session.user) {
-  //   req.session.error = `Someone is logged in already`;
-  //   res.status(200).send(req.session);
-  // } 
   // Check if name does NOT have an account
   if (!users[name]) {
     req.session.user = null;
@@ -69,11 +59,11 @@ app.post('/login', (req, res) => {
       req.session.error = null;
       users[name].visitCount++;
 
-      if (!req.session.visitCount) {
+      // if (!req.session.visitCount) {
         req.session.visitCount = 1;
-      } else {
-        req.session.visitCount++;
-      }
+      // } else {
+        // req.session.visitCount++;
+      // }
 
       res.status(200).send(req.session);
     });
