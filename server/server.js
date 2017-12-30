@@ -70,6 +70,16 @@ app.post('/login', (req, res) => {
   }
 });
 
+app.post('/visit', (req, res) => {
+  if (!req.session.visitCount) {
+    req.session.error = `You are not logged in. Please log in.`;
+    res.status(200).send(req.session);
+  } else {
+    req.session.visitCount++;
+    res.status(200).send(req.session);
+  }
+});
+
 app.post('/logout', (req, res) => {
   req.session.destroy((err) => {
     let myResponse = {};
