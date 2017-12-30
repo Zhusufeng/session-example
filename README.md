@@ -40,8 +40,8 @@ This branch adds a client side in HTML with a login and a logout button. To run 
 ###[4. simple-counter-input](https://github.com/Zhusufeng/session-example/tree/simple-counter-input)
 This branch adds an input box for clients to enter a username. To run the server, use node index.js. The server has a users object (if it weren't for this being a testing ground, you would probably use a [session store](https://www.npmjs.com/package/express-session#compatible-session-stores) instead). This branch serves up on localhost:8088 the index.html, and clients can enter a username. There will be a user's total visitCounts and a session visitCounts to keep track of. By clicking the login button repeatedly, your session visit counts will grow (currently all users will use the same session unless you logout).
 
-
 ###[5. simple-counter-signup](https://github.com/Zhusufeng/session-example/tree/simple-counter-signup)
+A signup input box and button have been added to the client side. To run the server, use node index.js. Signup and Login endpoints bundle user's total visitCounts and session visitCounts in an object called 'info', which is sent to the client. Signup catches if the username has already been created, and login catches if the username has not been created.
 
 ###[6. simple-counter-regenerate](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate)
 
