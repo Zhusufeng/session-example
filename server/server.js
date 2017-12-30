@@ -49,11 +49,19 @@ app.post('/login', (req, res) => {
   console.log(req.body.username);
   let name = req.body.username;
 
-  if (!users[name]) {
+  // Check if anyone is logged in
+  if (req.session.user) {
+    req.session.error = `Someone is logged in already`;
+    res.status(200).send(req.session);
+  } 
+  // Check if name does NOT have an account
+  else if (!users[name]) {
     req.session.user = null;
     req.session.error = `${name}, you do not have an account. Please use sign up option.`;
     res.status(200).send(req.session);
-  } else {
+  } 
+  // If no one is logged in and name EXISTS, log in
+  else {
     req.session.user = users[name];
     req.session.error = null;
     users[name].visitCount++;
