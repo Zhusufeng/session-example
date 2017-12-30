@@ -47,6 +47,7 @@
     <script>
       const signupForm = document.getElementById('signup-form');
       const loginForm = document.getElementById('login-form');
+      const visitForm = document.getElementById('visit-form');
       const logoutForm = document.getElementById('logout-form');
 
       function signup(e) {
@@ -99,12 +100,28 @@
           });
       }
 
+      function visit(e) {
+        e.preventDefault();
+        fetch('/visit', {
+          method: 'POST',
+          credentials: 'include',
+        })
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          console.log(data);
+          if (data.error) {
+            console.log('There was an error: ', data.error);
+          }
+        });
+      }
+
       function logout(e) {
         e.preventDefault();
         fetch('/logout', {
           method: 'POST',
           credentials: 'include',
-          body: loginForm
         })
           .then((res) => {
             return res.json();
@@ -119,6 +136,7 @@
 
       signupForm.addEventListener('submit', signup);
       loginForm.addEventListener('submit', login);
+      visitForm.addEventListener('submit', visit);
       logoutForm.addEventListener('submit', logout);
     </script>
   </body>
