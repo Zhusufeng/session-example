@@ -17,14 +17,14 @@ I started out with this [YouTube Tutorial](https://youtu.be/yaeD7OCIzOg), which 
 Note: Not all branches require each piece of tech
 
 ## Table of Contents
-1. [simple-counter](#1.-simple-counter)
-2. [simple-counter-logout](#2.-simple-counter-logout)
-3. [simple-counter-login](#3.-simple-counter-login)
-4. [simple-counter-input](#4.-simple-counter-input)
-5. [simple-counter-signup](#5.-simple-counter-signup)
-6. [simple-counter-regenerate](#6.-simple-counter-regenerate)
-7. [simple-counter-regenerate-two](#7.-simple-counter-regenerate-two)
-8. [simple-counter-redo-counting](#8.-simple-counter-redo-counting)
+1. [simple-counter](#1-simple-counter)
+2. [simple-counter-logout](#2-simple-counter-logout)
+3. [simple-counter-login](#3-simple-counter-login)
+4. [simple-counter-input](#4-simple-counter-input)
+5. [simple-counter-signup](#5-simple-counter-signup)
+6. [simple-counter-regenerate](#6-simple-counter-regenerate)
+7. [simple-counter-regenerate-two](#7-simple-counter-regenerate-two)
+8. [simple-counter-redo-counting](#8-simple-counter-redo-counting)
 
 ### [1. simple-counter](https://github.com/Zhusufeng/session-example/tree/simple-counter)
 This first branch follows this [YouTube Tutorial](https://youtu.be/yaeD7OCIzOg) by [Theodore Anderson](https://thejavascriptchronicles.com).
