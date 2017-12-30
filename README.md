@@ -44,6 +44,7 @@ This branch adds an input box for clients to enter a username. To run the server
 A signup input box and button have been added to the client side. To run the server, use node index.js. Signup and Login endpoints bundle user's total visitCounts and session visitCounts in an object called 'info', which is sent to the client. Signup catches if the username has already been created, and login catches if the username has not been created.
 
 ###[6. simple-counter-regenerate](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate)
+This branch refactors the above branch to use req.session instead of the 'info' object. It also checks if someone is logged in already, and someone tries to click 'signup' or 'login'.
 
 ###[7. simple-counter-regenerate-two](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate-two)
 
