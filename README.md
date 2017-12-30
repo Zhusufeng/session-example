@@ -34,15 +34,14 @@ This sets up only a server side file that can be reached at localhost:8088. The 
 ###[2. simple-counter-logout](https://github.com/Zhusufeng/session-example/tree/simple-counter-logout)
 This branch adds onto the last branch by adding a logout endpoint. By going to localhost:8088/logout, this will destroy your session.
 
+###[3. simple-counter-login](https://github.com/Zhusufeng/session-example/tree/simple-counter-login)
 
-###3. simple-counter-login
+###[4. simple-counter-input](https://github.com/Zhusufeng/session-example/tree/simple-counter-input)
 
-###4. simple-counter-input
+###[5. simple-counter-signup](https://github.com/Zhusufeng/session-example/tree/simple-counter-signup)
 
-###5. simple-counter-signup
+###[6. simple-counter-regenerate](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate)
 
-###6. simple-counter-regenerate
+###[7. simple-counter-regenerate-two](https://github.com/Zhusufeng/session-example/tree/simple-counter-regenerate-two)
 
-###7. simple-counter-regenerate-two
-
-###8. simple-counter-redo-counting
+###[8. simple-counter-redo-counting](https://github.com/Zhusufeng/session-example/tree/simple-counter-redo-counting)
