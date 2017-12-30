@@ -40,7 +40,7 @@ app.post('/signup', (req, res) => {
     };
     req.session.user = users[name];
     req.session.visitCount = 1;
-
+    req.session.error = null;
     res.status(201).send(req.session);
   }
 });
