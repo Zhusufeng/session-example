@@ -24,24 +24,26 @@ app.post('/signup', (req, res) => {
   let name = req.body.username;
 
   // Check if anyone is logged in
-  if (req.session.user) {
-    req.session.error = `Someone is logged in already`;
-    res.status(200).send(req.session);
-  } 
+  // if (req.session.user) {
+  //   req.session.error = `Someone is logged in already`;
+  //   res.status(200).send(req.session);
+  // } 
   // Check if name already has an account
-  else if (users[name]) {
+  if (users[name]) {
     req.session.error = `${name}, you already have an account. Please use log in option.`;
     res.status(200).send(req.session);
   } 
   // If no one is logged in or name does not have an account, create
   else {
-    users[name] = {
-      visitCount: 1
-    };
-    req.session.user = users[name];
-    req.session.visitCount = 1;
-    req.session.error = null;
-    res.status(201).send(req.session);
+    return req.session.regenerate(() => {
+      users[name] = {
+        visitCount: 1
+      };
+      req.session.user = users[name];
+      req.session.visitCount = 1;
+      req.session.error = null;
+      res.status(201).send(req.session);
+    });
   }
 });
 
