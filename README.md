@@ -50,7 +50,13 @@ This branch refactors the above branch to use req.session instead of the 'info' 
 This removes the check on if someone is logged in already when someone clicks 'signup' or 'login'. Instead, if someone is already logged in, it uses req.session.regenerate, which makes a new cookie even if it's already in session. It sets the req.session.user to the person who most recently logged in/signed up. To run the server, use node index.js.
 
 ###[8. simple-counter-redo-counting](https://github.com/Zhusufeng/session-example/tree/simple-counter-redo-counting)
-To run the server, use node index.js. This branch fixes the last branch. If you played around with the last branch, you will notice the visitCounts are not the same when you check the console logs for the client versus the server. It seems that req.session.user = users[name] saves a shallow copy of users[name] for the cookie. So on the client side, the totalCount does not change. It will only show the latest totalCount if you log out and then log in again.
+To run the server, use node index.js. This branch fixes the last branch. If you played around with the last branch, visitCount is only ever 1 because of session regeneration.
+
+So on the client side, a visit button has been added to be able to increase the visitCount.
+
+Once that was added, I noticed visitCounts are not the same when I checked the console logs for the client versus the server. It seems that req.session.user = users[name] saves a shallow copy of users[name] object for the cookie/req.session (aka req.session does not reference the same object in users). So on the client side, it receives this cookie and the total visitCounts do not change. So when I added  req.session.user.visitCount++ the visit endpoint, that does not update the users object. It updates the session's own shallow copy. 
+
+If you logout and login again, it will replace the copy with a new one, so the totalCount has been updated.
 
 ## Conclusion
 That's it for now!
