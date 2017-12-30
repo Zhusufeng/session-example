@@ -15,7 +15,8 @@ app.use(session({
 
 const users = {
   lisa: {
-    visitCount: 100
+    name: 'lisa',
+    totalCount: 100
   }
 };
 
@@ -32,7 +33,8 @@ app.post('/signup', (req, res) => {
   else {
     return req.session.regenerate(() => {
       users[name] = {
-        visitCount: 1
+        name: name,
+        totalCount: 1
       };
       req.session.user = users[name];
       req.session.visitCount = 1;
@@ -55,16 +57,12 @@ app.post('/login', (req, res) => {
   // If name EXISTS, log in
   else {
     return req.session.regenerate(() => {
-      req.session.user = users[name];
+      req.session.user = users[name]; // saves a shallow copy for the cookie? which does not change until I set it again
       req.session.error = null;
-      users[name].visitCount++;
+      users[name].totalCount++;
+      req.session.visitCount = 1;
 
-      // if (!req.session.visitCount) {
-        req.session.visitCount = 1;
-      // } else {
-        // req.session.visitCount++;
-      // }
-
+      console.log(users);
       res.status(200).send(req.session);
     });
   }
@@ -75,7 +73,11 @@ app.post('/visit', (req, res) => {
     req.session.error = `You are not logged in. Please log in.`;
     res.status(200).send(req.session);
   } else {
+    console.log(`${req.session.user.name} is logged in`)
+    // req.session.user.visitCount++; // this does not seem to update the users object?
+    users[req.session.user.name].totalCount++;
     req.session.visitCount++;
+    console.log(users); // this shows the users object updates
     res.status(200).send(req.session);
   }
 });
