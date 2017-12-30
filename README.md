@@ -1,7 +1,7 @@
 #session-example
 
 ##Summary
-This repo is a simple testing ground to learn how to use express-session. Each branch in this repo explores a functionality in the express-session module. (Currently the branches continue off of each other in numeric order.)
+This repo is a simple testing ground to learn how to use [express-session](https://www.npmjs.com/package/express-session). Each branch in this repo explores a functionality in the express-session module. (Currently the branches continue off of each other in numeric order.)
 
 I started out with this [YouTube Tutorial](https://youtu.be/yaeD7OCIzOg), which created my first branch. From there, I added more functionalities: logout button handling, login button handling, handling input from the client, sign up handling, session regeneration and some clean up.
 
@@ -38,6 +38,8 @@ This branch adds onto the last branch by adding a logout endpoint. To run the se
 This branch adds a client side in HTML with a login and a logout button. To run the server, use node index.js. This branch serves up on localhost:8088 the index.html, and when the 'logout' button is pushed, the server handles the request to the logout endpoint. When the 'login' button is pushed, the server handles the request to the login endpoint instead of the '/' endpoint.
 
 ###[4. simple-counter-input](https://github.com/Zhusufeng/session-example/tree/simple-counter-input)
+This branch adds an input box for clients to enter a username. To run the server, use node index.js. The server has a users object (if it weren't for this being a testing ground, you would probably use a [session store](https://www.npmjs.com/package/express-session#compatible-session-stores) instead). This branch serves up on localhost:8088 the index.html, and clients can enter a username. There will be a user's total visitCounts and a session visitCounts to keep track of. By clicking the login button repeatedly, your session visit counts will grow (currently all users will use the same session unless you logout).
+
 
 ###[5. simple-counter-signup](https://github.com/Zhusufeng/session-example/tree/simple-counter-signup)
 
